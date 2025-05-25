@@ -54,5 +54,13 @@ router.post(
     }
 );
 
+router.get('/upload', async (req, res) => {
+    try {
+        const entries = await TrainingEntry.find();
+        res.status(200).json(entries);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los datos.', details: error.message });
+    }
+});
 
 module.exports = router;
